@@ -1,0 +1,13 @@
+<div class="container">
+<form action="insert" method="POST">
+    <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Tên</label>
+    <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Tuổi</label>
+    <input type="text" name="age" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm</button>
+</form>
+<div>

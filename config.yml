@@ -5,7 +5,7 @@
 # === Basic configuration ===
 
 # Your application's name
-appname: "web::APP"
+appname: "perl-example"
 
 # The default layout to use for your application (located in
 # views/layouts/main.tt)
@@ -29,13 +29,13 @@ charset: "UTF-8"
 
 template: "simple"
 
-# template: "template_toolkit"
-# engines:
-#   template:
-#     template_toolkit:
-#       # Note: start_tag and end_tag are regexes
-#       start_tag: '<%'
-#       end_tag:   '%>'
+template: "template_toolkit"
+engines:
+  template:
+    template_toolkit:
+      # Note: start_tag and end_tag are regexes
+      start_tag: '<%'
+      end_tag:   '%>'
 
 # session engine
 #
