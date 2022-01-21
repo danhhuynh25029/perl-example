@@ -28,10 +28,34 @@ post "/insert" => sub{
     $db->commit;
     redirect "/";
 };
+get "/update" => sub {
+    my $db = connect_database();
+    my $id = query_parameters->get("id");
+    my $query = $db->prepare("SELECT * FROM emp WHERE id = ?");
+    $query->execute($id);
+
+    template "form" => {
+        emp => $query->fetchall_hashref("id")
+    };
+};
+post "/update" => sub {
+    my $db = connect_database();
+    my $id = body_parameters->get("id");
+    my $name = body_parameters->get("name");
+    my $age = body_parameters->get("age");
+    my $query = $db->prepare("UPDATE emp SET name=?,age=? WHERE id = ?");
+    $query->bind_param(1,$name);
+    $query->bind_param(2,$age);
+    $query->bind_param(3,$id);
+    $query->execute();
+    $query->finish();
+    $db->commit;
+    redirect "/";
+    # return $id;
+};
 get "/delete" => sub {
     my $db = connect_database();
     my $id = query_parameters->get("id");
-    print "iddd==========".$id;
     my $query = $db->prepare("DELETE FROM emp WHERE id=?");
     $query->execute($id);
     redirect "/";

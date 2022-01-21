@@ -1,5 +1,24 @@
 <div class="container">
-<form action="insert" method="POST">
+
+    <% IF emp.size() %>
+    <% FOREACH item IN emp.keys.sort %>
+        <form action="update" method="POST">
+            <div class="mb-3">
+            <input type="text" name="id"  value="<% emp.$item.id %>" class="form-control" id="exampleFormControlInput1" style="display:none">
+            </div>
+            <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tên</label>
+            <input type="text" name="name"  value="<% emp.$item.name %>" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Tuổi</label>
+            <input type="text" name="age" value="<% emp.$item.age %>" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </form>
+    <% END %>
+    <% ELSE %>
+     <form action="insert" method="POST">
     <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Tên</label>
     <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
@@ -9,5 +28,7 @@
     <input type="text" name="age" class="form-control" id="exampleFormControlInput1">
     </div>
     <button type="submit" class="btn btn-primary">Thêm</button>
-</form>
+    </form>
+    <% END %>
+
 <div>
